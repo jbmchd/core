@@ -135,7 +135,7 @@ interface IManager {
 	 * @throws NotFoundException
 	 * @since 10.0.9
 	 */
-	public function transferShare(IShare $share, $oldOwner, $newOwner, $finalTarget);
+	public function transferShare(IShare $share, $oldOwner, $newOwner, $finalTarget, $isChild = null);
 
 	/**
 	 * Get shares shared with $userId for specified share types.
