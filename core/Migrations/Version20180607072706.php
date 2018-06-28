@@ -37,11 +37,13 @@ class Version20180607072706 implements ISchemaMigration {
 			'unsigned' => true,
 			'comment' => 'timestamp when the lock was created'
 		]);
-		$table->addColumn('token', Type::STRING, [
+		$tokenColumn = $table->addColumn('token', Type::STRING, [
 			'notnull' => true,
 			'length' => 1024,
 			'comment' => 'uuid for webdav locks - 1024 random chars for WOPI locks'
 		]);
+		// TODO: mysql specific
+		$tokenColumn->setPlatformOption('collation', 'ascii_general_ci');
 		$table->addColumn('scope', Type::SMALLINT, [
 			'notnull' => true,
 			'comment' => '1 - exclusive, 2 - shared'
